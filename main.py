@@ -1,4 +1,4 @@
-import encryption
+import enigma
 
 def output(result: str) -> None:
     with open("Output.txt", "w") as f:
@@ -10,7 +10,7 @@ def main() -> None:
 
     for letter in text:
         if ord(letter) >= 65 and ord(letter) <= 90:
-            result += encryption.rotors(letter)
+            result += enigma.rotors(letter)
         else:
             result += letter
 
