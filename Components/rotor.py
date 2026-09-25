@@ -12,3 +12,6 @@ class Rotor():
 
     def encrypt(self, letter: str) -> str:        
         return self._wiring[(ord(letter) - 65 + (ord(self._position) - 65)) % 26]
+
+    def reverse(self, letter: str) -> str:
+        return chr(65 + self._wiring.find(letter) + (ord(self._position) - 65))
