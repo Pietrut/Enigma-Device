@@ -1,20 +1,7 @@
-import enigma
-
-def output(result: str) -> None:
-    with open("Output.txt", "w") as f:
-        f.write(result)
+from enigma import Enigma
 
 def main() -> None:
-    text = input("Enter Text:\n").upper()
-    result = ""
-
-    for letter in text:
-        if ord(letter) >= 65 and ord(letter) <= 90:
-            result += enigma.rotors(letter)
-        else:
-            result += letter
-
-    output(result)
+    device = Enigma()
 
 if __name__ == "__main__":
     main()
