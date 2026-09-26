@@ -5,7 +5,7 @@ def output(result: str) -> None:
         f.write(result)
 
 def main() -> None:
-    text = input("Enter Text:\n")
+    text = input("Enter Text:\n").upper()
     result = ""
 
     for letter in text:
