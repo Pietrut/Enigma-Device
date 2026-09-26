@@ -27,3 +27,14 @@ class Rotor():
             return chr(65 + position)
         else:
             return chr(91 + position)
+
+    @property
+    def position(self) -> str:
+        return self._position
+
+    @position.setter
+    def position(self, new: str) -> None:
+        if len(new) != 1:
+            self._position = "A"
+        else:
+            self._position = new.upper()
