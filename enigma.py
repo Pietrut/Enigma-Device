@@ -6,6 +6,9 @@ ROTOR_2 = Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", "A", "E", ROTOR_3)
 ROTOR_1 = Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", "A", "Q", ROTOR_2)
 REFLECTOR = Reflector("YRUHQSLDPXNGOKMIEBFZCWVJAT")
 
+class Enigma():
+    pass
+'''
 def rotors(letter: str) -> str:
     result = ROTOR_1.encrypt(letter)
     result = ROTOR_2.encrypt(result)
@@ -20,3 +23,4 @@ def rotors(letter: str) -> str:
     ROTOR_1.advance()
     
     return result
+'''
