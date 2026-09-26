@@ -8,13 +8,10 @@ REFLECTOR = Reflector("YRUHQSLDPXNGOKMIEBFZCWVJAT")
 
 def rotors(letter: str) -> str:
     result = ROTOR_1.encrypt(letter)
-    print(result)
 
     result = REFLECTOR.encrypt(result)
-    print(result)
     
     result = ROTOR_1.reverse(result)
-    print(result)
 
     ROTOR_1.advance()
     
