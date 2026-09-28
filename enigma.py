@@ -1,21 +1,44 @@
 from Components.rotor import Rotor
 from Components.reflector import Reflector
 
-ROTOR_1 = Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", "A", "Q")
-#ROTOR_2 = Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", "A", "E")
-#ROTOR_3 = Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", "A", "V")
-REFLECTOR = Reflector("YRUHQSLDPXNGOKMIEBFZCWVJAT")
+class Enigma():
+    def __init__(self) -> None:
+        self._rotor3 = Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", "A", "V")
+        self._rotor2 = Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", "A", "E", self._rotor3)
+        self._rotor1 = Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", "A", "Q", self._rotor2)
+        self._reflector = Reflector("YRUHQSLDPXNGOKMIEBFZCWVJAT")
 
-def rotors(letter: str) -> str:
-    result = ROTOR_1.encrypt(letter)
-    print(result)
-
-    result = REFLECTOR.encrypt(result)
-    print(result)
+    def _encrypt(self, letter: str) -> str:
+        result = self._rotor1.encrypt(letter)
+        result = self._rotor2.encrypt(result)
+        result = self._rotor3.encrypt(result)
     
-    result = ROTOR_1.reverse(result)
-    print(result)
-
-    ROTOR_1.advance()
+        result = self._reflector.encrypt(result)
     
-    return result
+        result = self._rotor3.reverse(result)
+        result = self._rotor2.reverse(result)
+        result = self._rotor1.reverse(result)
+    
+        self._rotor1.advance()
+        
+        return result
+
+    def adjust(self) -> None:
+        self._rotor1.position = input("Rotor 1: ")
+        self._rotor2.position = input("Rotor 2: ")
+        self._rotor3.position = input("Rotor 3: ")
+
+    def lights(self, result: str) -> None:
+        print("\n", result)
+
+    def start(self) -> None:
+        text = input("Enter Text:\n").upper()
+        result = ""
+    
+        for letter in text:
+            if ord(letter) >= 65 and ord(letter) <= 90:
+                result += self._encrypt(letter)
+            else:
+                result += letter
+    
+        self.lights(result)
