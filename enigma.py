@@ -24,12 +24,13 @@ class Enigma():
         return result
 
     def adjust(self) -> None:
-        self._rotor1.position = input("Rotor 1: ")
-        self._rotor2.position = input("Rotor 2: ")
-        self._rotor3.position = input("Rotor 3: ")
+        code = input("Enter code: ")
+        self._rotor1.position = code[2]
+        self._rotor2.position = code[1]
+        self._rotor3.position = code[0]
 
     def lights(self, result: str) -> None:
-        print("\n", result)
+        print("\n" + result)
 
     def start(self) -> None:
         text = input("Enter Text:\n").upper()
