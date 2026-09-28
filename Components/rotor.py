@@ -20,10 +20,6 @@ class Rotor():
         return self._wiring[(ord(letter) - 65 + (ord(self._position) - 65)) % 26]
 
     def reverse(self, letter: str) -> str:
-<<<<<<< HEAD
-        return chr(65 + self._wiring.find(letter))
-=======
-        #LETTER = K, POSITION = C
         position = self._wiring.find(letter) - (ord(self._position) - 65)
         
         if position >= 0:
@@ -41,4 +37,3 @@ class Rotor():
             self._position = "A"
         else:
             self._position = new.upper()
->>>>>>> e5c5e182179a7a1e51fd7257b75473153de920b3
