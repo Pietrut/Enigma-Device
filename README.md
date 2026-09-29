@@ -36,14 +36,14 @@ After installation, the `enigma` command will be available from your terminal.
 A basic command looks like:
 
 ```bash
-enigma --text "Target Hit!" --rotors "V-I-II" --plugboard "A-N;T-P;E-H" --message_key "ZKN"
+enigma --text "TARGET HIT!" --rotors "V-I-II" --plugboard "A-N;T-P;E-H" --message_key "ZKN"
 ```
 
 For example:
 
 ```text
 Input:
-Target Hit!
+TARGET HIT!
 
 Output:
 BEXYPI ALD!
@@ -54,7 +54,7 @@ Running the encrypted text through an Enigma machine configured with the **same 
 ```text
 BEXYPI ALD!
     ↓
-Target Hit!
+TARGET HIT!
 ```
 
 ### Arguments
