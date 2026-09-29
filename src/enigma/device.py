@@ -1,6 +1,6 @@
-from Components.plugboard import Plugboard
-from Components.rotor import Rotor
-from Components.reflector import Reflector
+from .Components.plugboard import Plugboard
+from .Components.rotor import Rotor
+from .Components.reflector import Reflector
 
 ROTORS: dict[str, tuple[str, str]] = {
     "I": ("EKMFLGDQVZNTOWYHXUSPAIBRCJ", "Q"),

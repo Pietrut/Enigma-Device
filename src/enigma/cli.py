@@ -1,5 +1,5 @@
 import argparse
-from enigma import Enigma
+from .device import Enigma
 
 def parse_input():
     parser = argparse.ArgumentParser()
