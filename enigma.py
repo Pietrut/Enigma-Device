@@ -1,3 +1,4 @@
+from Components.plugboard import Plugboard
 from Components.rotor import Rotor
 from Components.reflector import Reflector
 
@@ -10,7 +11,8 @@ ROTORS: dict[str, tuple[str, str]] = {
 }
 
 class Enigma():
-    def __init__(self, numbers: str) -> None:
+    def __init__(self, numbers: str, plugboard_settings: str) -> None:
+        self._plugboard = Plugboard(plugboard_settings)
         self._reflector = Reflector("YRUHQSLDPXNGOKMIEBFZCWVJAT")
         self._rotor3 = Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", "A", "V")
         self._rotor2 = Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", "A", "E", self._rotor3)
@@ -35,7 +37,9 @@ class Enigma():
                 continue
 
     def _encrypt(self, letter: str) -> str:
-        result = self._rotor1.encrypt(letter)
+        result = self._plugboard.substitute(letter)
+
+        result = self._rotor1.encrypt(result)
         result = self._rotor2.encrypt(result)
         result = self._rotor3.encrypt(result)
     
@@ -44,6 +48,8 @@ class Enigma():
         result = self._rotor3.reverse(result)
         result = self._rotor2.reverse(result)
         result = self._rotor1.reverse(result)
+
+        result = self._plugboard.substitute(result)
     
         self._rotor1.advance()
         
